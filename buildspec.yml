@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      android: 29
+      
+  pre_build:
+    commands:
+      -  sudo apt-get install zip
+      -  sudo apt-get install unzip
+      -  sudo apt-get install libncurses5
+      
+  build:
+    commands:
+      - source build/envsetup.sh
+      - lunch rpi4-eng
+      - make ramdisk systemimage vendorimage -jx
+
+  post_build:
+    commands:
+      - echo "Sono in Post Build"
