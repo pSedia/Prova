@@ -13,9 +13,9 @@ phases:
       
   build:
     commands:
-      - source build/envsetup.sh
-      - lunch rpi4-eng
-      - make ramdisk systemimage vendorimage -jx
+      - bash prova.sh
+      #- lunch rpi4-eng
+      #- make ramdisk systemimage vendorimage -jx
 
   post_build:
     commands:
