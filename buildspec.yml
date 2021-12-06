@@ -1,18 +1,18 @@
 version: 0.2
 
-phases:
-      
+phases:  
+
   pre_build:
     commands:
-      -  apt-get install zip
-      -  apt-get install unzip
-      -  apt-get install libncurses5
+      - cd /efs
+      - docker build -t dockertest .
       
   build:
     commands:
-      - source build/envsetup.sh
-      - lunch rpi4-eng
-      - make ramdisk systemimage vendorimage -j8
+      - cd /efs
+      - docker run dockertest
+      - docker save -o dockertest.tar dockertest
+      - ls
 
   post_build:
     commands:
